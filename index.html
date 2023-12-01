@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mahendra Portfolio Website</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/91ae6fdb58.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="header">
@@ -20,10 +21,143 @@
                 </ul>
             </nav>
             <div class="header-text">
-                
+                <p>Backend</p>
+                <h1>Hi, I'm <span>Mahendra <br>Adhikari</span> from Nepal.</h1>
             </div>
         </div>
     </div>
+    <!------------ about ------------>
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="images/" alt="">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae culpa ipsam, totam obcaecati est, repudiandae quas quaerat tempore doloribus amet harum voluptate molestias explicabo reiciendis labore? Iure itaque id illo?</p>
+
+                    <div class="tab-titles">
+                        <p class="tab-links active-links" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links" onclick="opentab('experience')" >Experience</p>
+                        <p class="tab-links" onclick="opentab('education')">Education</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>UI/UX</span><br>Designing Web/App interfaces</li>
+                            <li><span>Web Development</span><br>Web App Develoment</li>
+                            <li><span>UI/UX</span><br>Designing Web/App interfaces</li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-contents" id="experience">
+                        <ul>
+                            <li><span>2021 - Current</span><br>Designing Web/App interfaces</li>
+                            <li><span>2019 - 2021</span><br>Web App Develoment</li>
+                            <li><span>2017 - 2019</span><br>Designing Web/App interfaces</li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li><span>2075</span><br>Complete +2 in Science</li>
+                            <li><span>2075 - Current</span><br>Join Bachelor in Computer Application(BCA) </li>
+                            
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!------------ Services ------------>
+    <div id="services">
+        <div class="container">
+            <h1 class="sub-title">My Services</h1>
+            <div class="services-list">
+                <div>
+                    <i class="fa-solid fa-code"></i>
+                    <h2>Web Design</h2>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga est quis, esse ipsa, excepturi ab ut beatae eos tempore sapiente placeat. Voluptatem quas distinctio recusandae magnam, nihil beatae fugiat quisquam?</p>
+                    <a href="#">Learn More</a>
+                </div>
+                <div>
+                    <i class="fa-solid fa-crop"></i>
+                    <h2>UI/UX Design</h2>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga est quis, esse ipsa, excepturi ab ut beatae eos tempore sapiente placeat. Voluptatem quas distinctio recusandae magnam, nihil beatae fugiat quisquam?</p>
+                    <a href="#">Learn More</a>
+                </div>
+                <div>
+                    <i class="fa-brands fa-app-store-ios"></i>
+                    <h2>App Design</h2>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga est quis, esse ipsa, excepturi ab ut beatae eos tempore sapiente placeat. Voluptatem quas distinctio recusandae magnam, nihil beatae fugiat quisquam?</p>
+                    <a href="#">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!------------ Portfolio ------------>
+    <div id="portfolio">
+        <div class="container">
+            <h1 class="sub-title">My Work</h1>
+            <div class="work-list">
+                <div class="work">
+                    <img src="images/work.jpeg">
+                    <div class="layer">
+                        <h3>Social Media App</h3>
+                        <p>The app connects you to people</p>
+                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <div class="work">
+                    <img src="images/">
+                    <div class="layer">
+                        <h3>Music App</h3>
+                        <p>The app connects you to people</p>
+                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <div class="work">
+                    <img src="images/">
+                    <div class="layer">
+                        <h3>E-commerce App</h3>
+                        <p>The app connects you to people</p>
+                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="btn">See More</a>
+        </div>
+    </div>
+
+    <!------------ Contact ------------>
+
     
+    
+    
+    <script>
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+    
+        function opentab(tabname){
+            for(tablink of tablinks){
+                tablink.classList.remove("active-links");
+            }
+            for(tabcontent of tabcontents){
+                tabcontent.classList.remove("active-tab");
+            }
+    
+            event.currentTarget.classList.add("active-links");
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+    
+    
+    </script> 
 </body>
+
+
 </html>
