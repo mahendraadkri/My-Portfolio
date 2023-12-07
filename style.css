@@ -326,7 +326,7 @@ nav .fa{
 }
 @media only screen and (max-width: 600px){
     #header{
-        background-image: url( );
+        background-image: url( images/background1.jpg);
     }
     .header-text{
         margin-top: 100%;
@@ -389,4 +389,7 @@ nav .fa{
     color: #61b752;
     margin-top: -40px;
     display: block;
+}
+.skill{
+    font-size: 18px;
 }
