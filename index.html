@@ -1,180 +1,325 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mahendra's Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/91ae6fdb58.js" crossorigin="anonymous"></script>
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00ffff', // Your signature Cyan color
+                        dark: '#080808',    // Your background color
+                        card: '#262626',    // Card background
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Mobile Menu Transitions */
+        #sidemenu {
+            transition: right 0.5s;
+        }
+
+        /* Tab Active State underlining */
+        .tab-links.active-link::after {
+            width: 50%;
+        }
+        
+        .tab-links::after {
+            content: '';
+            width: 0;
+            height: 3px;
+            background: #00ffff;
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            transition: 0.5s;
+        }
+    </style>
 </head>
-<body>
-    <div id="header">
-        <div class="container">
-            <nav>
-                <ul id="sidemenu">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <i class="fa-regular fa-circle-xmark" onclick="closemenu()"></i>
+<body class="bg-dark text-white leading-relaxed">
+
+    <!------------ Fixed Navigation Bar ------------>
+    <!-- UPDATED: Removed background classes, kept transparent -->
+    <div id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-6">
+        <div class="container mx-auto px-8 md:px-16 lg:px-24">
+            <nav class="flex items-center justify-between flex-wrap">
+                <!-- Logo -->
+                <h2 class="text-3xl font-bold text-primary cursor-pointer drop-shadow-md" onclick="window.scrollTo(0,0)"></h2>
+
+                <!-- Menu Links -->
+                <!-- Note: Mobile menu still has bg-card so you can read it, but desktop is transparent -->
+                <ul id="sidemenu" class="fixed top-0 right-[-200px] w-[200px] h-screen bg-card pt-12 z-50 shadow-lg md:static md:w-auto md:h-auto md:bg-transparent md:pt-0 md:flex md:gap-8 md:shadow-none transition-all duration-300">
+                    <li class="block md:inline-block m-6 md:m-0"><a href="#about" class="text-white text-lg font-medium hover:text-primary transition duration-300 relative group drop-shadow-md">About <span class="absolute bottom-[-6px] left-0 w-0 h-[3px] bg-primary transition-all duration-300 group-hover:w-full hidden md:block"></span></a></li>
+                    <li class="block md:inline-block m-6 md:m-0"><a href="#services" class="text-white text-lg font-medium hover:text-primary transition duration-300 relative group drop-shadow-md">Services <span class="absolute bottom-[-6px] left-0 w-0 h-[3px] bg-primary transition-all duration-300 group-hover:w-full hidden md:block"></span></a></li>
+                    <li class="block md:inline-block m-6 md:m-0"><a href="#portfolio" class="text-white text-lg font-medium hover:text-primary transition duration-300 relative group drop-shadow-md">Portfolio <span class="absolute bottom-[-6px] left-0 w-0 h-[3px] bg-primary transition-all duration-300 group-hover:w-full hidden md:block"></span></a></li>
+                    <li class="block md:inline-block m-6 md:m-0"><a href="#contact" class="text-white text-lg font-medium hover:text-primary transition duration-300 relative group drop-shadow-md">Contact <span class="absolute bottom-[-6px] left-0 w-0 h-[3px] bg-primary transition-all duration-300 group-hover:w-full hidden md:block"></span></a></li>
+                    <i class="fa-regular fa-circle-xmark absolute top-6 left-6 text-2xl text-white cursor-pointer md:hidden" onclick="closemenu()"></i>
                 </ul>
-                <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+                <i class="fa-solid fa-bars text-3xl cursor-pointer md:hidden text-white" onclick="openmenu()"></i>
             </nav>
+        </div>
+    </div>
+
+    <!------------ Header Banner ------------>
+    <div id="header" class="w-full h-screen bg-cover bg-center relative" style="background-image: url('images/background.jpg');">
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-black/40"></div>
+
+        <div class="container mx-auto px-8 md:px-16 lg:px-24 py-4 relative z-10 h-full flex flex-col justify-center">
+            
             <div class="header-text">
-                <h1>Hi, It's me <span>Mahendra Adhikari</span><br> A Fullstack Web Developer<br>An IT student of Nepal<br>I build value Through Codes</h1>
+                <p class="text-xl md:text-2xl font-light mb-4">Fullstack Web Developer</p>
+                <h1 class="text-5xl md:text-7xl font-bold leading-tight">Hi, I'm <span class="text-primary">Mahendra</span><br><span class="text-primary"></span> <br><span class="text-2xl md:text-4xl font-light block mt-2 text-gray-300">Building Value Through Code</span></h1>
             </div>
         </div>
     </div>
 
     <!------------ About ------------>
-    <div id="about">
-        <div class="container">
-            <div class="row">
-                <div class="about-col-1">
-                    <img src="images/about.jpg" alt="">
+    <div id="about" class="py-20 bg-dark">
+        <div class="container mx-auto px-8 md:px-16 lg:px-24">
+            <div class="flex flex-col md:flex-row gap-10 justify-between">
+                <div class="basis-full md:basis-1/3">
+                    <img src="images/about.jpg" alt="About Mahendra" class="w-full rounded-2xl shadow-lg shadow-primary/20 hover:scale-105 transition duration-500">
                 </div>
-                <div class="about-col-2">
-                    <h1 class="sub-title">About Me</h1>
-                    <p>I am Mahendra Adhikari, an IT student of Nepal. A passionate fullstack web developer in creating dynamic and user-friendly online experiences. I have a strong foundation in both front-end and back-end technologies, specializing in PHP and Laravel frameworks.</p>
+                <div class="basis-full md:basis-[60%] text-gray-400">
+                    <h1 class="text-5xl font-bold text-white mb-6">About Me</h1>
+                    <p class="text-lg leading-relaxed mb-8">
+                        I am Mahendra Adhikari, an IT student from Nepal. I am a passionate fullstack web developer dedicated to creating dynamic and user-friendly online experiences. I possess a strong foundation in both front-end and back-end technologies, specializing in <span class="text-primary font-medium">PHP</span> and <span class="text-primary font-medium">Laravel</span> frameworks.
+                    </p>
 
-                    <div class="tab-titles">
-                        <p class="tab-links active-links" onclick="opentab('skills')">Skills</p>
-                        <p class="tab-links" onclick="opentab('experience')">Experience</p>
-                        <p class="tab-links" onclick="opentab('education')">Education</p>
+                    <div class="flex gap-8 mb-8 text-lg font-medium">
+                        <p class="tab-links active-link cursor-pointer relative pb-1 hover:text-primary transition" onclick="opentab('skills', event)">Skills</p>
+                        <p class="tab-links cursor-pointer relative pb-1 hover:text-primary transition" onclick="opentab('experience', event)">Experience</p>
+                        <p class="tab-links cursor-pointer relative pb-1 hover:text-primary transition" onclick="opentab('education', event)">Education</p>
                     </div>
 
-                    <div class="tab-contents active-tab" id="skills">
-                        <ul>
-                            <li><span>Web Development</span><br>Web App Development</li>
-                            <li><span>Frontend</span><br>HTML, CSS, TailwindCSS, React</li>
-                            <li><span>Backend</span><br>PHP & Laravel</li>
+                    <div class="tab-contents block" id="skills">
+                        <ul class="space-y-4">
+                            <li><span class="text-primary text-sm font-semibold block mb-1">Web Development</span>Web App Development</li>
+                            <li><span class="text-primary text-sm font-semibold block mb-1">Frontend</span>HTML, CSS, TailwindCSS, React</li>
+                            <li><span class="text-primary text-sm font-semibold block mb-1">Backend</span>PHP & Laravel</li>
                         </ul>
                     </div>
 
-                    <div class="tab-contents" id="experience">
-                        <ul>
-                            <li><span>Dec 2023 – May 2024</span><br>Internship & Junior Laravel Developerat Federation of Computer Association Nepal – Chitwan  </li>
-                            <li><span>Sep 2024 – Jun 2025 </span><br>Junior Laravel Developer at Nexis</li>
+                    <div class="tab-contents hidden" id="experience">
+                        <ul class="space-y-4">
+                            <li><span class="text-primary text-sm font-semibold block mb-1">Dec 2023 – May 2024</span>Internship & Junior Laravel Developer at CAN Federation – Chitwan</li>
+                            <li><span class="text-primary text-sm font-semibold block mb-1">Sep 2024 – Jun 2025</span>Junior Laravel Developer at Nexis</li>
                         </ul>
                     </div>
 
-                    <div class="tab-contents" id="education">
-                        <ul>
-                            <li><span>2018</span><br>Complete +2 in Science</li>
-                            <li><span>2019 - 2024</span><br>Bachelor in Computer Application (BCA)</li>
+                    <div class="tab-contents hidden" id="education">
+                        <ul class="space-y-4">
+                            <li><span class="text-primary text-sm font-semibold block mb-1">2018</span>Completed +2 in Science</li>
+                            <li><span class="text-primary text-sm font-semibold block mb-1">2019 - 2024</span>Bachelor in Computer Application (BCA)</li>
                         </ul>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 
     <!------------ Services ------------>
-    <div id="services">
-        <div class="container">
-            <h1 class="sub-title">My Services</h1>
-            <div class="services-list">
-                <div>
-                    <i class="fa-solid fa-code"></i>
-                    <h2>Web Design</h2>
-                    <p><b class="skill">Skills:</b><br>
-                        HTML, CSS, JavaScript, Bootstrap, Tailwind CSS, and others.</p>
+    <div id="services" class="py-12 bg-dark">
+        <div class="container mx-auto px-8 md:px-16 lg:px-24">
+            <h1 class="text-5xl font-bold text-white mb-12">My Services</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <div class="bg-card p-8 rounded-xl hover:bg-primary hover:-translate-y-2 transition duration-500 group cursor-default">
+                    <i class="fa-solid fa-code text-5xl mb-6 text-white group-hover:text-black transition duration-500"></i>
+                    <h2 class="text-2xl font-medium mb-4 group-hover:text-black">Web Design</h2>
+                    <p class="text-sm font-light leading-relaxed group-hover:text-black">
+                        <b class="font-bold">Skills:</b><br>
+                        HTML, CSS, JavaScript, Bootstrap, Tailwind CSS, and React.
+                    </p>
                 </div>
-                <div>
-                    <i class="fa-solid fa-code"></i>
-                    <h2>Backend & API Development</h2>
-                    <p><b class="skill">Skills:</b><br>
-                        I possess a strong expertise in server-side technologies, particularly excelling in Laravel.</p>
+
+                <div class="bg-card p-8 rounded-xl hover:bg-primary hover:-translate-y-2 transition duration-500 group cursor-default">
+                    <i class="fa-solid fa-code text-5xl mb-6 text-white group-hover:text-black transition duration-500"></i>
+                    <h2 class="text-2xl font-medium mb-4 group-hover:text-black">Backend & API</h2>
+                    <p class="text-sm font-light leading-relaxed group-hover:text-black">
+                        <b class="font-bold">Skills:</b><br>
+                        Strong expertise in server-side technologies, particularly excelling in Laravel.
+                    </p>
                 </div>
-                <div>
-                    <i class="fa-brands fa-app-store-ios"></i>
-                    <h2>Database Management</h2>
-                    <p>Proficient in managing databases like MySQL.</p>
+
+                <div class="bg-card p-8 rounded-xl hover:bg-primary hover:-translate-y-2 transition duration-500 group cursor-default">
+                    <i class="fa-brands fa-app-store-ios text-5xl mb-6 text-white group-hover:text-black transition duration-500"></i>
+                    <h2 class="text-2xl font-medium mb-4 group-hover:text-black">Database</h2>
+                    <p class="text-sm font-light leading-relaxed group-hover:text-black">
+                        Proficient in managing and optimizing databases like MySQL.
+                    </p>
                 </div>
-                <div>
-                    <i class="fa-brands fa-git-alt"></i>
-                    <h2>Version Control</h2>
-                    <p>Proficient in using Git for version control.</p>
+
+                <div class="bg-card p-8 rounded-xl hover:bg-primary hover:-translate-y-2 transition duration-500 group cursor-default">
+                    <i class="fa-brands fa-git-alt text-5xl mb-6 text-white group-hover:text-black transition duration-500"></i>
+                    <h2 class="text-2xl font-medium mb-4 group-hover:text-black">Version Control</h2>
+                    <p class="text-sm font-light leading-relaxed group-hover:text-black">
+                        Proficient in using Git and GitHub for version control and collaboration.
+                    </p>
                 </div>
+
             </div>
         </div>
     </div>
 
-    <!------------ Portfolio ------------>
-    <div id="portfolio">
-        <div class="container">
-            <h1 class="sub-title">My Projects</h1>
-            <div class="work-list">
-                <div class="work">
-                    <img src="images/work1.jpeg" alt="Yamato International Project">
-                    <div class="layer">
-                        <h3>Yamato International</h3>
-                        <p>Laravel-based backend and Admin Panel frontend for a corporate site.</p>
-                        <a href="https://yamatointernational.com/" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
+    <!------------ Control Panel / DevOps ------------>
+    <div id="cpanel" class="py-12 bg-dark">
+        <div class="container mx-auto px-8 md:px-16 lg:px-24">
+            <h1 class="text-5xl font-bold text-white mb-12">Server & Control Panel</h1>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <div class="bg-card p-8 rounded-xl hover:bg-primary hover:-translate-y-2 transition duration-500 group cursor-default">
+                    <i class="fa-solid fa-server text-5xl mb-6 text-white group-hover:text-black transition duration-500"></i>
+                    <h2 class="text-2xl font-medium mb-4 group-hover:text-black">cPanel Management</h2>
+                    <p class="text-sm font-light leading-relaxed group-hover:text-black">
+                        Experience managing hosting environments, email configuration, DNS records,
+                        sub domains, FTP, backups, SSL & file manager.
+                    </p>
                 </div>
 
-                <div class="work">
-                    <img src="images/work2.jpeg" alt="Nexis Gym SaaS Project">
-                    <div class="layer">
-                        <h3>Nexis Gym SaaS</h3>
-                        <p>Complete backend development of a Gym Management SaaS Application.</p>
-                        <a href="https://www.nexis.com.np/" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
+                <div class="bg-card p-8 rounded-xl hover:bg-primary hover:-translate-y-2 transition duration-500 group cursor-default">
+                    <i class="fa-solid fa-cloud text-5xl mb-6 text-white group-hover:text-black transition duration-500"></i>
+                    <h2 class="text-2xl font-medium mb-4 group-hover:text-black">Deployment</h2>
+                    <p class="text-sm font-light leading-relaxed group-hover:text-black">
+                        Deploying Laravel & React apps on shared hosting & VPS environment setup,
+                        database migration & performance optimization.
+                    </p>
                 </div>
 
-                <div class="work">
-                    <img src="images/work3.PNG" alt="Nexis Gym SaaS Project">
-                    <div class="layer">
-                        <h3>Nexis Construction</h3>
-                        <p>Laravel-based backend and Admin Panel frontend using React for a construction company.</p>
-                        <a href="https://construction.nexis.com.np" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
+                <div class="bg-card p-8 rounded-xl hover:bg-primary hover:-translate-y-2 transition duration-500 group cursor-default">
+                    <i class="fa-solid fa-shield-halved text-5xl mb-6 text-white group-hover:text-black transition duration-500"></i>
+                    <h2 class="text-2xl font-medium mb-4 group-hover:text-black">Security & Monitoring</h2>
+                    <p class="text-sm font-light leading-relaxed group-hover:text-black">
+                        SSL, firewall rules, malware monitoring, backups & server side protection for
+                        stable and secure applications.
+                    </p>
                 </div>
+
             </div>
-            <a href="#" class="btn">See More</a>
+        </div>
+    </div>
+
+
+    <!------------ Portfolio ------------>
+    <div id="portfolio" class="py-20">
+        <div class="container mx-auto px-8 md:px-16 lg:px-24">
+            <h1 class="text-5xl font-bold text-white mb-12">My Projects</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                
+                <div class="relative rounded-xl overflow-hidden group">
+                    <img src="images/work1.jpeg" alt="Yamato" class="w-full h-full object-cover rounded-xl transition transform duration-500 group-hover:scale-110">
+                    <div class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-t from-black/90 to-primary/80 flex flex-col items-center justify-center text-center px-6 overflow-hidden transition-all duration-500 group-hover:h-full">
+                        <h3 class="text-2xl font-medium text-white mb-4">Yamato International</h3>
+                        <p class="text-white text-sm mb-4">Laravel-based backend and Admin Panel frontend for a corporate site.</p>
+                        <a href="https://yamatointernational.com/" target="_blank" class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary text-lg hover:bg-dark hover:text-white transition"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <div class="relative rounded-xl overflow-hidden group">
+                    <img src="images/work2.jpeg" alt="Nexis Gym" class="w-full h-full object-cover rounded-xl transition transform duration-500 group-hover:scale-110">
+                    <div class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-t from-black/90 to-primary/80 flex flex-col items-center justify-center text-center px-6 overflow-hidden transition-all duration-500 group-hover:h-full">
+                        <h3 class="text-2xl font-medium text-white mb-4">Nexis Gym SaaS</h3>
+                        <p class="text-white text-sm mb-4">Complete backend development of a Gym Management SaaS Application.</p>
+                        <a href="https://www.nexis.com.np/" target="_blank" class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary text-lg hover:bg-dark hover:text-white transition"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <div class="relative rounded-xl overflow-hidden group">
+                    <img src="images/work3.PNG" alt="Nexis Construction" class="w-full h-full object-cover rounded-xl transition transform duration-500 group-hover:scale-110">
+                    <div class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-t from-black/90 to-primary/80 flex flex-col items-center justify-center text-center px-6 overflow-hidden transition-all duration-500 group-hover:h-full">
+                        <h3 class="text-2xl font-medium text-white mb-4">Nexis Construction</h3>
+                        <p class="text-white text-sm mb-4">Laravel backend and React Admin Panel for a construction company.</p>
+                        <a href="https://construction.nexis.com.np" target="_blank" class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary text-lg hover:bg-dark hover:text-white transition"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+            </div>
+            <a href="#" class="block w-fit mx-auto mt-12 px-10 py-3 border border-primary text-white rounded hover:bg-primary hover:text-black transition duration-300">See More</a>
         </div>
     </div>
 
     <!------------ Contact ------------>
-    <div id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="contact-left">
-                    <h1 class="sub-title">Contact Me</h1>
-                    <p><i class="fa-solid fa-envelopes-bulk"></i> mahendrachhetri500@gmail.com</p>
-                    <p><i class="fa-solid fa-square-phone"></i> 9865024683</p>
-                    <div class="social-icons">
-                        <a href="https://www.facebook.com/ardneham.xetri"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#"><i class="fa-solid fa-envelope"></i></a>
-                        <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
-                        <a href="https://www.linkedin.com/in/mahendra-adhikari-a74839256/"><i class="fa-brands fa-linkedin"></i></a>
+    <div id="contact" class="py-20">
+        <div class="container mx-auto px-8 md:px-16 lg:px-24">
+            <div class="flex flex-col md:flex-row gap-12">
+                
+                <div class="basis-full md:basis-[35%]">
+                    <h1 class="text-5xl font-bold text-white mb-8">Contact Me</h1>
+                    <p class="flex items-center text-gray-400 mb-4 text-lg"><i class="fa-solid fa-envelopes-bulk text-primary text-2xl mr-4"></i> mahendrachhetri500@gmail.com</p>
+                    <p class="flex items-center text-gray-400 mb-8 text-lg"><i class="fa-solid fa-square-phone text-primary text-2xl mr-4"></i> 9865024683</p>
+                    
+                    <div class="flex gap-6 mb-8">
+                        <a href="https://www.facebook.com/ardneham.xetri" class="text-gray-400 text-3xl hover:text-primary hover:-translate-y-1 transition duration-300"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 text-3xl hover:text-primary hover:-translate-y-1 transition duration-300"><i class="fa-solid fa-envelope"></i></a>
+                        <a href="#" class="text-gray-400 text-3xl hover:text-primary hover:-translate-y-1 transition duration-300"><i class="fa-brands fa-square-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/mahendra-adhikari-a74839256/" class="text-gray-400 text-3xl hover:text-primary hover:-translate-y-1 transition duration-300"><i class="fa-brands fa-linkedin"></i></a>
                     </div>
-                    <a href="images/My_Resume.pdf" download class="btn btn2">View CV</a>
+                    
+                    <a href="images/My_Resume.pdf" download class="inline-block bg-primary text-black font-medium px-10 py-3 rounded hover:bg-white transition duration-300">View CV</a>
                 </div>
+
+                <div class="basis-full md:basis-[60%]">
+                    <form action="sendmail.php" method="POST" class="flex flex-col gap-4">
+                        <input type="text" name="name" placeholder="Your Name" required class="w-full bg-card p-4 rounded text-white text-lg border-none outline-none focus:ring-2 focus:ring-primary transition">
+                        
+                        <input type="email" name="email" placeholder="Your Email" required class="w-full bg-card p-4 rounded text-white text-lg border-none outline-none focus:ring-2 focus:ring-primary transition">
+                        
+                        <textarea name="message" rows="6" placeholder="Your Message" required class="w-full bg-card p-4 rounded text-white text-lg border-none outline-none focus:ring-2 focus:ring-primary transition resize-none"></textarea>
+                        
+                        <button type="submit" class="bg-primary text-black font-medium px-12 py-3 mt-4 rounded hover:bg-white transition duration-300 w-fit cursor-pointer">
+                            Submit
+                        </button>
+                    </form>
+
+                </div>
+
             </div>
         </div>
-        <div class="copyright">
-            <p>Copyright &copy; Mahendra Adhikari</p>
-        </div>
+        
+        
     </div>
-
+    <div class="text-center bg-card py-6 mt-16 text-gray-400 font-light">
+            <p>Copyright &copy; Mahendra Adhikari</p>
+    </div>
     <!------------ Scripts ------------>
     <script>
         var tablinks = document.getElementsByClassName("tab-links");
         var tabcontents = document.getElementsByClassName("tab-contents");
 
-        function opentab(tabname){
+        function opentab(tabname, event){
             for(tablink of tablinks){
-                tablink.classList.remove("active-links");
+                tablink.classList.remove("active-link");
             }
             for(tabcontent of tabcontents){
-                tabcontent.classList.remove("active-tab");
+                tabcontent.classList.add("hidden");
+                tabcontent.classList.remove("block");
             }
-
-            event.currentTarget.classList.add("active-links");
-            document.getElementById(tabname).classList.add("active-tab");
+            event.currentTarget.classList.add("active-link");
+            var selectedTab = document.getElementById(tabname);
+            selectedTab.classList.remove("hidden");
+            selectedTab.classList.add("block");
         }
 
         var sidemenu = document.getElementById("sidemenu");
@@ -186,19 +331,35 @@
         function closemenu(){
             sidemenu.style.right = "-200px";
         }
-
+        
         var menuItems = document.querySelectorAll('#sidemenu li a');
-
         menuItems.forEach(function(menuItem) {
             menuItem.addEventListener('click', function() {
-                if (window.matchMedia("(max-width: 600px)").matches) {
-                    menuItems.forEach(function(item) {
-                        item.classList.remove('active-menu-item');
-                    });
-                    this.classList.add('active-menu-item');
+                if (window.innerWidth <= 768) {
+                    closemenu();
                 }
             });
         });
+
+        // ----------------------------------------------------
+        // UPDATED: Scroll effect only reduces padding size,
+        // but keeps the background transparent.
+        // ----------------------------------------------------
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                // Shrink padding
+                nav.classList.remove('py-6');
+                nav.classList.add('py-3');
+            } else {
+                // Expand padding
+                nav.classList.add('py-6');
+                nav.classList.remove('py-3');
+            }
+        });
     </script>
+
+    
 </body>
 </html>
+
